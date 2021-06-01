@@ -11,7 +11,7 @@ const calculateWealth = document.getElementById('calculate-wealth');
 let data = [];
 
 getRandomUser();
-
+getRandomUser();
 getRandomUser();
 
 //Function for adding users with API
@@ -39,7 +39,33 @@ async function getRandomUser(){
 
 function addUserData(obj){
     data.push(obj);
+    upDateDOM();
 }
 
-console.log(data);
+// console.log(data);
+
+//Function for showing data in DOM
+
+function upDateDOM(providedData = data){
+
+    //Clear the main div of previous user data
+
+    main.innerHTML = '<h2><strong>Person</strong> Wealth</h2>';
+
+    providedData.forEach((item)=> {
+
+        //Insert a child div inside the main div to display new user
+        const element = document.createElement('div');
+
+        element.classList.add('person');
+
+        element.innerHTML = `<strong>${item.name}</strong> ${item.money}`;
+
+        //Append the element to the parent div of main
+
+        main.appendChild(element);
+
+    })
+}
+
 
