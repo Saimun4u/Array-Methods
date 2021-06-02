@@ -68,11 +68,8 @@ function upDateDOM(providedData = data){
     })
 }
 
-//Function number as money
 
-function formatMoney(number){
-    return '$' + number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-}
+//All Event Listeners
 
 //Event listener for adding user
 
@@ -82,11 +79,32 @@ addUser.addEventListener('click', getRandomUser);
 
 doubleMoney.addEventListener('click', dblMoney);
 
+//Event listenr for sorting money
+
+sortBtn.addEventListener('click', sortMoney);
+
+
+
+//Function number as money
+
+function formatMoney(number){
+    return '$' + number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+}
+
+
 //Function for doubling money for users
 
 function dblMoney(){
     data = data.map((user)=>{
         return {...user, money: user.money * 2};
     })
+    upDateDOM();
+}
+
+//Function for sorting money in Descending order
+
+function sortMoney(){
+    data.sort((a,b)=> b.money - a.money);
+
     upDateDOM();
 }
