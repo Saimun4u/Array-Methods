@@ -42,7 +42,7 @@ function addUserData(obj){
     upDateDOM();
 }
 
-// console.log(data);
+console.log(data);
 
 //Function for showing data in DOM
 
@@ -74,6 +74,20 @@ function formatMoney(number){
     return '$' + number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
 }
 
-//Add a user
+//Event listener for adding user
 
 addUser.addEventListener('click', getRandomUser);
+
+//Event listener for doubling money
+
+doubleMoney.addEventListener('click', dblMoney);
+
+//Function for Doubling Money
+
+function dblMoney() {
+    data = data.map((item)=>{
+        return {...data}
+    })
+    upDateDOM();    
+}
+
