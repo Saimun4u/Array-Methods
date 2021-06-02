@@ -82,12 +82,11 @@ addUser.addEventListener('click', getRandomUser);
 
 doubleMoney.addEventListener('click', dblMoney);
 
-//Function for Doubling Money
+//Function for doubling money for users
 
-function dblMoney() {
-    data = data.map((item)=>{
-        return {...data}
+function dblMoney(){
+    data = data.map((user)=>{
+        return {...user, money: user.money * 2};
     })
-    upDateDOM();    
+    upDateDOM();
 }
-
