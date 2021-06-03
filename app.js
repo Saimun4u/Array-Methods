@@ -5,14 +5,10 @@ const addUser = document.getElementById('add-user');
 const doubleMoney = document.getElementById('double');
 const showMillionairesBtn = document.getElementById('show-millionaires');
 const sortBtn = document.getElementById('sort');
-const calculateWealth = document.getElementById('calculate-wealth');
+const calculateWealthBtn = document.getElementById('calculate-wealth');
 
 
 let data = [];
-
-getRandomUser();
-getRandomUser();
-getRandomUser();
 
 //Function for adding users with API
 
@@ -87,6 +83,9 @@ sortBtn.addEventListener('click', sortMoney);
 
 showMillionairesBtn.addEventListener('click', showMillionaires);
 
+//Event listener for Calculating wealth
+
+calculateWealthBtn.addEventListener('click', calculateWealth);
 
 
 //Function number as money
@@ -120,3 +119,13 @@ function showMillionaires(){
 
     upDateDOM();
 }
+
+
+//Function for showing Millionaires
+
+function calculateWealth(){
+    const wealth = data.reduce((acc, user) => acc += user.money, 0)
+    
+    
+}
+
