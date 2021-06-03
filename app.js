@@ -3,7 +3,7 @@
 const main = document.getElementById('main');
 const addUser = document.getElementById('add-user');
 const doubleMoney = document.getElementById('double');
-const showMillionaires = document.getElementById('show-millionaires');
+const showMillionairesBtn = document.getElementById('show-millionaires');
 const sortBtn = document.getElementById('sort');
 const calculateWealth = document.getElementById('calculate-wealth');
 
@@ -19,7 +19,7 @@ getRandomUser();
 async function getRandomUser(){
     const res = await fetch('https://randomuser.me/api');
     const data = await res.json();
-    // console.log(data.results);
+    console.log(data.results);
 
     const user = data.results[0];
 
@@ -42,7 +42,7 @@ function addUserData(obj){
     upDateDOM();
 }
 
-console.log(data);
+// console.log(data);
 
 //Function for showing data in DOM
 
@@ -79,9 +79,13 @@ addUser.addEventListener('click', getRandomUser);
 
 doubleMoney.addEventListener('click', dblMoney);
 
-//Event listenr for sorting money
+//Event listener for sorting money
 
 sortBtn.addEventListener('click', sortMoney);
+
+//Event listener for filtering millionaires
+
+showMillionairesBtn.addEventListener('click', showMillionaires);
 
 
 
@@ -105,6 +109,14 @@ function dblMoney(){
 
 function sortMoney(){
     data.sort((a,b)=> b.money - a.money);
+
+    upDateDOM();
+}
+
+//Function for showing Millionaires
+
+function showMillionaires(){
+    data = data.filter((user) => user.money > 1000000);
 
     upDateDOM();
 }
