@@ -15,8 +15,7 @@ let data = [];
 async function getRandomUser(){
     const res = await fetch('https://randomuser.me/api');
     const data = await res.json();
-    console.log(data.results);
-
+    
     const user = data.results[0];
 
     const newUser = {
@@ -131,6 +130,6 @@ function calculateWealth(){
     wealthEl.innerHTML = `<h3>Total Wealth: <strong> ${formatMoney(wealth)}</strong></h3>`
 
     main.appendChild(wealthEl)
-    
+
 }
 
